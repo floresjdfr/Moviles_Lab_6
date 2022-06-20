@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/drawable/ic_information.xml" value="0.28125" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/drawable/ic_information_filled.xml" value="0.28125" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/drawable/ic_school.xml" value="0.28125" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/drawable/ic_school_outline.xml" value="0.28125" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layout/fragment_career_info.xml" value="0.25104166666666666" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layout/fragment_career_information.xml" value="0.26510416666666664" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layout/fragment_create_course.xml" value="0.3625" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/career/layout/fragment_career_details.xml" value="0.18541666666666667" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/career/layout/fragment_career_info.xml" value="0.26510416666666664" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/career/layout/fragment_careers.xml" value="0.35507246376811596" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/career/layout/fragment_create_career.xml" value="0.26510416666666664" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/career/layout/template_career.xml" value="0.35507246376811596" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/course/layout/fragment_courses.xml" value="0.26510416666666664" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/course/layout/fragment_create_course.xml" value="0.3625" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/course/layout/template_career.xml" value="0.35507246376811596" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/course/layout/template_course.xml" value="0.35507246376811596" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/navdrawer/layout/nav_fragment_container.xml" value="0.35507246376811596" />
+        <entry key="..\:/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/menu/bottom_nav_career.xml" value="0.2786458333333333" />
+        <entry key="..\:/Proyectos/Kotlin/GestionAcademicaApp/app/src/main/res/layout/activity_login.xml" value="0.3625" />
+        <entry key="..\:/Proyectos/Kotlin/GestionAcademicaApp/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Proyectos/Moviles/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layout/template_course.xml" value="0.22826086956521738" />
+        <entry key="..\:/Proyectos/Moviles/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/career/layout/template_course.xml" value="0.22826086956521738" />
+        <entry key="..\:/Proyectos/Moviles/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/course/layout/template_course.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/flore/Documents/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/drawable/ic_login_avatar.xml" value="0.2703125" />
+        <entry key="..\:/Users/flore/Documents/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/flore/Documents/GitHub/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/drawable/ic_add_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/drawable/ic_login.xml" value="0.1" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/drawable/ic_save.xml" value="0.1707236842105263" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layout/fragment_create_career.xml" value="0.23157894736842105" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layout/nav_content.xml" value="0.16052631578947368" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layout/nav_header.xml" value="0.15986842105263158" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/career/layout/activity_career.xml" value="0.25" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/career/layout/fragment_careers.xml" value="0.15164473684210528" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/career/layout/fragment_create_career.xml" value="0.176" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/career/layout/template_career.xml" value="0.264" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/login/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/navdrawer/layout/nav_fragment_container.xml" value="0.16052631578947368" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/layouts/navdrawer/layout/nav_header.xml" value="0.23157894736842105" />
+        <entry key="..\:/Users/flore/Documents/WorkingProjects/AppGestionAcademica/GestionAcademicaApp/app/src/main/res/menu/nav_menu.xml" value="0.16973684210526316" />
+      </map>
+    </option>
+  </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+    <file type="web" url="file://$PROJECT_DIR$/app" />
+    <file type="web" url="file://$PROJECT_DIR$/app/build/generated/source/kapt/debug" />
+    <file type="web" url="file://$PROJECT_DIR$/app/build/generated/source/kapt/debugAndroidTest" />
+    <file type="web" url="file://$PROJECT_DIR$/app/build/generated/source/kapt/debugUnitTest" />
+    <file type="web" url="file://$PROJECT_DIR$/app/build/generated/source/kaptKotlin/debug" />
+    <file type="web" url="file://$PROJECT_DIR$/app/build/generated/source/kaptKotlin/debugAndroidTest" />
+    <file type="web" url="file://$PROJECT_DIR$/app/build/generated/source/kaptKotlin/debugUnitTest" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="jbr-11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

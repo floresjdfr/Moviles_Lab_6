@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/career_info"
+        android:enabled="true"
+        android:icon="@drawable/ic_information_outlined"
+        android:title="@string/information" />
+
+    <item
+        android:id="@+id/career_courses"
+        android:enabled="true"
+        android:icon="@drawable/ic_school_outline"
+        android:title="@string/courses" />
+</menu>
