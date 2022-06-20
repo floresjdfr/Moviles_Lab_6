@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/GitHub/Moviles_Lab_6/Lab6/app/src/main/res/layouts/student/layout/activity_career.xml" value="0.38697916666666665" />
+        <entry key="..\:/GitHub/Moviles_Lab_6/Lab6/app/src/main/res/layouts/student/layout/fragment_careers.xml" value="0.38697916666666665" />
+        <entry key="..\:/GitHub/Moviles_Lab_6/Lab6/app/src/main/res/layouts/student/layout/fragment_create_career.xml" value="0.38697916666666665" />
+        <entry key="..\:/GitHub/Moviles_Lab_6/Lab6/app/src/main/res/layouts/student/layout/fragment_create_student.xml" value="0.38697916666666665" />
+        <entry key="..\:/GitHub/Moviles_Lab_6/Lab6/app/src/main/res/layouts/student/layout/template_student.xml" value="0.38697916666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="16" project-jdk-type="JavaSDK" />
+</project>
