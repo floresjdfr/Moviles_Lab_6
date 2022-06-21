@@ -1,34 +1,39 @@
 package com.example.gestionacademicaapp.ui.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.gestionacademicaapp.data.model.CourseModel
+import com.example.gestionacademicaapp.data.repository.CourseRepository
+import kotlinx.coroutines.launch
 
 class CourseViewModel : ViewModel() {
     val courses = MutableLiveData<ArrayList<CourseModel>>(ArrayList())
     val isLoading = MutableLiveData<Boolean>()
-    suspend fun getCourses(id: Int) {
-//        isLoading.postValue(true)
-//        val result = CourseRepository.getCourses(id)
-//        courses.postValue(result)
-////        courses.value = result
-//        isLoading.postValue(false)
+    fun getCourses(context: Context) {
+
+        isLoading.postValue(true)
+        var result = CourseRepository.getCourses(context)
+        courses.value = result
+        isLoading.postValue(false)
+
     }
 
-//    suspend fun createCourse(careerCourseModel: CareerCourseModel) {
-//        isLoading.postValue(true)
-//        var result = CourseRepository.createCourse(careerCourseModel)
-//        isLoading.postValue(false)
-//    }
+    fun createCourse(context: Context, course: CourseModel) {
+        isLoading.postValue(true)
+        CourseRepository.insertCourse(context, course)
+        isLoading.postValue(false)
+    }
 
-//    suspend fun deleteCourse(id: Int): Boolean {
-//        return CourseRepository.deleteCourse(id)
-//    }
+    fun deleteCourse(context: Context, course: CourseModel): Boolean {
+        return CourseRepository.deleteCourse(context, course)
+    }
 
-//    suspend fun updateCourse(id: Int, career: CourseModel): Boolean {
-//        isLoading.postValue(true)
-//        var result = CourseRepository.updateCourse(id, career)
-//        isLoading.postValue(false)
-//        return result
-//    }
+    fun updateCourse(context: Context, course: CourseModel): Boolean {
+        isLoading.postValue(true)
+        var result = CourseRepository.updateCourse(context, course)
+        isLoading.postValue(false)
+        return result
+    }
 }

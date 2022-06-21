@@ -38,6 +38,7 @@ android {
             res {
                 srcDirs 'src\\main\\res',
                         'src\\main\\res\\layouts\\student',
+                        'src\\main\\res\\layouts\\studentCourses',
                         'src\\main\\res\\layouts\\navdrawer',
                         'src\\main\\res\\layouts\\course'
 

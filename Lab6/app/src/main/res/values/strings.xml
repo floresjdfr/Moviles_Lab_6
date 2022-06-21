@@ -12,7 +12,7 @@
     <string name="careerTitle">Career Title</string>
     <string name="save">Save</string>
     <string name="information">Information</string>
-    <string name="courses">Courses</string>
+    <string name="courses">Enrolled</string>
     <string name="new_course">New Course</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -25,4 +25,6 @@
     <string name="studentName">Student Name</string>
     <string name="studentLastName">Student Lastname</string>
     <string name="studentAge">Student Age</string>
+    <string name="courseDescription">Course Description</string>
+    <string name="available_courses">Available</string>
 </resources>

@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/career_info"
+        android:id="@+id/student_info"
         android:enabled="true"
         android:icon="@drawable/ic_information_outlined"
         android:title="@string/information" />
 
     <item
-        android:id="@+id/career_courses"
+        android:id="@+id/studentCourses"
         android:enabled="true"
         android:icon="@drawable/ic_school_outline"
         android:title="@string/courses" />
+
+    <item
+        android:id="@+id/course_available"
+        android:enabled="true"
+        android:icon="@drawable/ic_available_courses"
+        android:title="@string/available_courses" />
 </menu>

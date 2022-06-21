@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.example.gestionacademicaapp.R
 import com.example.gestionacademicaapp.databinding.ActivityStudentBinding
+import com.example.gestionacademicaapp.ui.view.course.CoursesFragment
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
 import kotlinx.android.synthetic.main.activity_student.*
 import kotlinx.android.synthetic.main.nav_fragment_container.*
@@ -35,9 +36,13 @@ class StudentActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_item_careers -> {
+            R.id.nav_item_students -> {
                 toolbar.title = "Students"
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container, StudentsFragment()).commit()
+            }
+            R.id.nav_item_courses -> {
+                toolbar.title = "Courses"
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, CoursesFragment()).commit()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)

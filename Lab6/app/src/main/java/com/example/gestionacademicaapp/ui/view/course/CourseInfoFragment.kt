@@ -1,4 +1,4 @@
-package com.example.gestionacademicaapp.ui.view.student
+package com.example.gestionacademicaapp.ui.view.course
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import com.example.gestionacademicaapp.data.model.StudentModel
 import com.example.gestionacademicaapp.databinding.FragmentStudentInfoBinding
 
 
-class StudentInfoFragment : Fragment() {
+class CourseInfoFragment : Fragment() {
     private lateinit var binding: FragmentStudentInfoBinding
     private lateinit var student: StudentModel
 

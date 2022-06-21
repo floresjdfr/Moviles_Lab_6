@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.gestionacademicaapp.R
 import com.example.gestionacademicaapp.data.model.CourseModel
+import kotlinx.android.synthetic.main.template_course.view.*
 
 class CourseAdapterRecyclerView(items: List<CourseModel>) : RecyclerView.Adapter<ViewHolder>() {
 
@@ -19,7 +20,7 @@ class CourseAdapterRecyclerView(items: List<CourseModel>) : RecyclerView.Adapter
     private lateinit var mContext: Context
     private lateinit var mListener: OnItemClickListener
 
-    class CourseHolder(itemView: View, listener: OnItemClickListener) : ViewHolder(itemView){
+    class CareerHolder(itemView: View, listener: OnItemClickListener) : ViewHolder(itemView){
         init {
             itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
@@ -36,8 +37,8 @@ class CourseAdapterRecyclerView(items: List<CourseModel>) : RecyclerView.Adapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val courseListView = LayoutInflater.from(parent.context).inflate(R.layout.template_student, parent, false)
-        val sch = CourseHolder(courseListView, mListener)
+        val careerListView = LayoutInflater.from(parent.context).inflate(R.layout.template_course, parent, false)
+        val sch = CareerHolder(careerListView, mListener)
         mContext = parent.context
         return sch
     }
@@ -49,8 +50,8 @@ class CourseAdapterRecyclerView(items: List<CourseModel>) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = itemsList?.get(position)
 
-//        holder.itemView.recyclerview_career_id.text = item?.Code
-//        holder.itemView.recyclerview_career_name.text = item?.Name
+        holder.itemView.recyclerview_course_description.text = item?.Description
+        holder.itemView.recyclerview_course_credits.text = item?.Credits.toString()
     }
 
     fun getAtPosition(position: Int): CourseModel?{

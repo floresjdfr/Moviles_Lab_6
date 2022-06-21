@@ -15,54 +15,42 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionacademicaapp.R
-import com.example.gestionacademicaapp.data.model.CourseModel
-import com.example.gestionacademicaapp.data.model.StudentModel
 import com.example.gestionacademicaapp.databinding.FragmentCoursesBinding
 import com.example.gestionacademicaapp.ui.viewmodel.CourseViewModel
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import kotlinx.android.synthetic.main.nav_fragment_container.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class CoursesFragment : Fragment() {
 
     private lateinit var recyclerViewElement: RecyclerView
     private lateinit var adapter: CourseAdapterRecyclerView
-    private lateinit var binding: FragmentCoursesBinding
-    private lateinit var career: StudentModel
     private val viewModel: CourseViewModel by viewModels()
-
-
+    private lateinit var binding: FragmentCoursesBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
 
         binding = FragmentCoursesBinding.inflate(inflater, container, false)
-        career = arguments?.getSerializable("career") as StudentModel
-
 
         recyclerViewElement = binding.courseRecyclerview
         recyclerViewElement.layoutManager = LinearLayoutManager(recyclerViewElement.context)
         recyclerViewElement.setHasFixedSize(true)
 
-        CoroutineScope(Dispatchers.Main).launch {
-            viewModel.getCourses(career.ID)
-            initAdapter()
-            initListeners()
-            initObservers()
+        initAdapter()
+        initListeners()
+        initObservers()
 
-            val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallBack)
-            itemTouchHelper.attachToRecyclerView(recyclerViewElement)
-        }
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallBack)
+        itemTouchHelper.attachToRecyclerView(recyclerViewElement)
 
         return binding.root
     }
 
     private fun initObservers() {
         viewModel.courses.observe(this) {
-            initAdapter(it)
+            adapter.itemsList = it
+            adapter.notifyDataSetChanged()
         }
 
         viewModel.isLoading.observe(this) {
@@ -70,37 +58,22 @@ class CoursesFragment : Fragment() {
         }
     }
 
-    private fun initAdapter(items: List<CourseModel>? = null) {
-        val nCourseList = if (!items.isNullOrEmpty()) items else emptyList()
-        adapter = CourseAdapterRecyclerView(nCourseList)
+    private fun initAdapter() {
+        viewModel.getCourses(context!!)
+        val nCareerList = viewModel.courses.value!!
+        adapter = CourseAdapterRecyclerView(nCareerList)
         recyclerViewElement.adapter = adapter
         adapter.setOnClickListener(object : CourseAdapterRecyclerView.OnItemClickListener {
             override fun onItemClick(position: Int) {
-                val course = adapter.getAtPosition(position)
-//                val bundle = Bundle()
-//                val fragment = CourseDetailsFragment()
-
-//                bundle.putSerializable("career", course)
-//                fragment.arguments = bundle
-
-                activity?.toolbar?.title = "Course Information"
-//                parentFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
+                //Nothing
             }
         })
     }
 
     private fun initListeners() {
         binding.addCourse.setOnClickListener {
-            val bundle = Bundle()
-            val fragment = CreateCourseFragment()
-
-            bundle.putSerializable("career", career)
-            fragment.arguments = bundle
-
-
-
             activity?.toolbar?.title = "Create Course"
-            parentFragmentManager.beginTransaction().replace(R.id.career_details_container, fragment).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.fragment_container, CreateCourseFragment()).commit()
         }
     }
 
@@ -142,7 +115,6 @@ class CoursesFragment : Fragment() {
                 .addSwipeRightActionIcon(R.drawable.ic_pencil)
                 .create()
                 .decorate()
-
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
         }
     }
@@ -151,15 +123,13 @@ class CoursesFragment : Fragment() {
         AlertDialog.Builder(context)
             .setMessage("Are you sure you want to delete this item?")
             .setPositiveButton("Delete") { _: DialogInterface, _: Int ->
-                CoroutineScope(Dispatchers.Main).launch {
-                    var itemToDelete = adapter.getAtPosition(position)?.ID!!
-//                    val response = viewModel.deleteCourse(itemToDelete)
-//                    if (response) {
-//                        adapter.deleteAtPosition(position)
-//                        adapter.notifyItemRemoved(position)
-//                    } else {
-//                        adapter.notifyItemChanged(position)
-//                    }
+                val itemToDelete = adapter.getAtPosition(position)
+                val response = viewModel.deleteCourse(context!!, itemToDelete!!)
+                if (response) {
+                    adapter.deleteAtPosition(position)
+                    adapter.notifyItemRemoved(position)
+                } else {
+                    adapter.notifyItemChanged(position)
                 }
             }
             .setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
@@ -173,17 +143,15 @@ class CoursesFragment : Fragment() {
         AlertDialog.Builder(context)
             .setMessage("Are you sure you want to edit this item?")
             .setPositiveButton("Edit") { _: DialogInterface, _: Int ->
-                CoroutineScope(Dispatchers.Main).launch {
-                    val itemToEdit = adapter.getAtPosition(position)!!
+                val itemToEdit = adapter.getAtPosition(position)!!
 
-//                    val bundle = Bundle()
-//                    bundle.putSerializable("career", itemToEdit)
-//                    val fragment = CreateCourseFragment()
-//                    fragment.arguments = bundle
+                val bundle = Bundle()
+                bundle.putSerializable("course", itemToEdit)
+                val fragment = CreateCourseFragment()
+                fragment.arguments = bundle
 
-                    activity?.toolbar?.title = "Edit Course"
-//                    parentFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
-                }
+                activity?.toolbar?.title = "Edit Course"
+                parentFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
             }
             .setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
                 adapter.notifyItemChanged(position)

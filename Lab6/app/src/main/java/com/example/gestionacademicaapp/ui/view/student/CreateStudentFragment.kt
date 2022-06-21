@@ -12,9 +12,6 @@ import com.example.gestionacademicaapp.R
 import com.example.gestionacademicaapp.data.model.StudentModel
 import com.example.gestionacademicaapp.databinding.FragmentCreateStudentBinding
 import com.example.gestionacademicaapp.ui.viewmodel.StudentViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 class CreateStudentFragment : Fragment() {
@@ -52,57 +49,50 @@ class CreateStudentFragment : Fragment() {
 
     private fun initCreateListeners() {
         binding.createButton.setOnClickListener {
-            CoroutineScope(Dispatchers.Main).launch {
-                createStudents()
-                Toast.makeText(context, "Student added!", Toast.LENGTH_SHORT).show()
-                parentFragmentManager.beginTransaction().replace(R.id.fragment_container, StudentsFragment()).commit()
-            }
+            createStudents()
+            Toast.makeText(context, "Student added!", Toast.LENGTH_SHORT).show()
+            parentFragmentManager.beginTransaction().replace(R.id.fragment_container, StudentsFragment()).commit()
         }
     }
 
     private fun initEditListeners() {
         binding.createButton.setOnClickListener {
-            CoroutineScope(Dispatchers.Main).launch {
-                var response = editCareer()
-                if (response) {
-                    Toast.makeText(context, "Student edited!", Toast.LENGTH_SHORT).show()
-                    parentFragmentManager.beginTransaction().replace(R.id.fragment_container, StudentsFragment())
-                        .commit()
-                } else {
-                    Toast.makeText(context, "An error occurred while editing!", Toast.LENGTH_SHORT).show()
-                }
+            val response = editCareer()
+            if (response) {
+                Toast.makeText(context, "Student edited!", Toast.LENGTH_SHORT).show()
+                parentFragmentManager.beginTransaction().replace(R.id.fragment_container, StudentsFragment())
+                    .commit()
+            } else {
+                Toast.makeText(context, "An error occurred while editing!", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun initEditFields(){
+    private fun initEditFields() {
         binding.studentName.editText?.setText(editStudent?.Name)
         binding.studentLastName.editText?.setText(editStudent?.LastName)
-        binding.studentAge.editText?.setText(editStudent?.Age!!)
+        binding.studentAge.editText?.setText(editStudent?.Age!!.toString())
     }
 
-    private suspend fun createStudents() {
+    private fun createStudents() {
         val studentName = binding.studentName.editText?.text.toString()
         val studentLastname = binding.studentLastName.editText?.text.toString()
-        val studentAge =  binding.studentAge.editText?.text.toString().toInt()
+        val studentAge = binding.studentAge.editText?.text.toString().toInt()
 
         val student = StudentModel(0, studentName, studentLastname, studentAge, ArrayList())
 
         viewModel.createStudent(context!!, student)
     }
 
-    private suspend fun editCareer(): Boolean {
+    private fun editCareer(): Boolean {
         val studentName = binding.studentName.editText?.text.toString()
         val studentLastname = binding.studentLastName.editText?.text.toString()
-        val studentAge =  binding.studentAge.editText?.text.toString().toInt()
+        val studentAge = binding.studentAge.editText?.text.toString().toInt()
 
         editStudent?.Name = studentName
         editStudent?.LastName = studentLastname
         editStudent?.Age = studentAge
 
-//        return viewModel.updateCareer(editStudent?.ID!!, editStudent!!)
-        return false
+        return viewModel.updateStudent(context!!, editStudent!!)
     }
-
-
 }

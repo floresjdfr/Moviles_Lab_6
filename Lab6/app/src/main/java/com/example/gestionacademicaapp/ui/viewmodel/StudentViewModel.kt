@@ -12,29 +12,28 @@ class StudentViewModel : ViewModel() {
     val students = MutableLiveData<ArrayList<StudentModel>>(ArrayList())
     val isLoading = MutableLiveData<Boolean>()
     fun getStudents(context: Context) {
-        viewModelScope.launch {
-            isLoading.postValue(true)
-            var result = StudentRepository.getStudents(context)
-            //careers.postValue(result)
-            students.value= result
-            isLoading.postValue(false)
-        }
+
+        isLoading.postValue(true)
+        var result = StudentRepository.getStudents(context)
+        students.value = result
+        isLoading.postValue(false)
+
     }
 
-    suspend fun createStudent(context: Context, student: StudentModel) {
+    fun createStudent(context: Context, student: StudentModel) {
         isLoading.postValue(true)
-        var result = StudentRepository.insertStudent(context, student)
+        StudentRepository.insertStudent(context, student)
         isLoading.postValue(false)
     }
 
-//    suspend fun deleteCareer(id: Int): Boolean {
-//        return CareerRepository.deleteCareer(id)
-//    }
-//
-//    suspend fun updateCareer(id: Int, career: CareerModel): Boolean {
-//        isLoading.postValue(true)
-//        var result = CareerRepository.updateCareer(id, career)
-//        isLoading.postValue(false)
-//        return result
-//    }
+    fun deleteStudent(context: Context, student: StudentModel): Boolean {
+        return StudentRepository.deleteStudent(context, student)
+    }
+
+    fun updateStudent(context: Context, student: StudentModel): Boolean {
+        isLoading.postValue(true)
+        var result = StudentRepository.updateStudent(context, student)
+        isLoading.postValue(false)
+        return result
+    }
 }

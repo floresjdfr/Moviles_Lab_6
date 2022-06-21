@@ -1,4 +1,4 @@
-package com.example.gestionacademicaapp.ui.view.student
+package com.example.gestionacademicaapp.ui.view.course
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,13 +9,10 @@ import androidx.fragment.app.Fragment
 import com.example.gestionacademicaapp.R
 import com.example.gestionacademicaapp.data.model.StudentModel
 import com.example.gestionacademicaapp.databinding.FragmentStudentDetailsBinding
-import com.example.gestionacademicaapp.ui.view.course.CoursesFragment
-import com.example.gestionacademicaapp.ui.view.studentCourse.AvailableCoursesFragment
-import com.example.gestionacademicaapp.ui.view.studentCourse.StudentCoursesFragment
 import kotlinx.android.synthetic.main.nav_fragment_container.*
 
 
-class StudentDetailsFragment : Fragment() {
+class CourseDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentStudentDetailsBinding
     private lateinit var student: StudentModel
@@ -46,16 +43,6 @@ class StudentDetailsFragment : Fragment() {
                     initInfoFragment()
                     true
                 }
-                R.id.studentCourses -> {
-                    (activity as AppCompatActivity).toolbar.title = "Student Enrolled Courses"
-                    initCoursesFragment()
-                    true
-                }
-                R.id.course_available -> {
-                    (activity as AppCompatActivity).toolbar.title = "Avaliable Courses"
-                    initAvailableCoursesFragment()
-                    true
-                }
                 else -> false
             }
         }
@@ -81,7 +68,7 @@ class StudentDetailsFragment : Fragment() {
 
     private fun initInfoFragment(){
         val bundle = Bundle()
-        val fragment = StudentInfoFragment()
+        val fragment = CourseInfoFragment()
 
         bundle.putSerializable("student", student)
         fragment.arguments = bundle
@@ -91,20 +78,11 @@ class StudentDetailsFragment : Fragment() {
 
     private fun initCoursesFragment(){
         val bundle = Bundle()
-        val fragment = StudentCoursesFragment()
+        val fragment = CoursesFragment()
 
         bundle.putSerializable("student", student)
         fragment.arguments = bundle
 
-        parentFragmentManager.beginTransaction().replace(R.id.career_details_container, fragment).commit()
-    }
-
-    private fun initAvailableCoursesFragment(){
-        val bundle = Bundle()
-        val fragment = AvailableCoursesFragment()
-
-        bundle.putSerializable("student", student)
-        fragment.arguments = bundle
 
         parentFragmentManager.beginTransaction().replace(R.id.career_details_container, fragment).commit()
     }
