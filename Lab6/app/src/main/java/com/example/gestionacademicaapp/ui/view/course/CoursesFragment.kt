@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -109,9 +110,9 @@ class CoursesFragment : Fragment() {
             isCurrentlyActive: Boolean,
         ) {
             RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                .addSwipeLeftBackgroundColor(ContextCompat.getColor(context!!, R.color.secondaryDark))
+                .addSwipeLeftBackgroundColor(ContextCompat.getColor(context!!, R.color.primaryLight))
                 .addSwipeLeftActionIcon(R.drawable.ic_trash)
-                .addSwipeRightBackgroundColor(ContextCompat.getColor(context!!, R.color.primaryLight))
+                .addSwipeRightBackgroundColor(ContextCompat.getColor(context!!, R.color.secondaryDark))
                 .addSwipeRightActionIcon(R.drawable.ic_pencil)
                 .create()
                 .decorate()
@@ -129,6 +130,7 @@ class CoursesFragment : Fragment() {
                     adapter.deleteAtPosition(position)
                     adapter.notifyItemRemoved(position)
                 } else {
+                    Toast.makeText(context!!, "Unable to delete this course. There might be students enrolled to it", Toast.LENGTH_SHORT).show()
                     adapter.notifyItemChanged(position)
                 }
             }

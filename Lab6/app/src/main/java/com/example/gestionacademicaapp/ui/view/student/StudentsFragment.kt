@@ -117,9 +117,9 @@ class StudentsFragment : Fragment() {
             isCurrentlyActive: Boolean,
         ) {
             RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                .addSwipeLeftBackgroundColor(ContextCompat.getColor(context!!, R.color.secondaryDark))
+                .addSwipeLeftBackgroundColor(ContextCompat.getColor(context!!, R.color.primaryLight))
                 .addSwipeLeftActionIcon(R.drawable.ic_trash)
-                .addSwipeRightBackgroundColor(ContextCompat.getColor(context!!, R.color.primaryLight))
+                .addSwipeRightBackgroundColor(ContextCompat.getColor(context!!, R.color.secondaryDark))
                 .addSwipeRightActionIcon(R.drawable.ic_pencil)
                 .create()
                 .decorate()

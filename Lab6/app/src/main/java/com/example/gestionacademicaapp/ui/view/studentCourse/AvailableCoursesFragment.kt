@@ -14,13 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionacademicaapp.data.model.StudentModel
 import com.example.gestionacademicaapp.databinding.FragmentAvailableCoursesBinding
-import com.example.gestionacademicaapp.ui.view.course.CourseAdapterRecyclerView
 import com.example.gestionacademicaapp.ui.viewmodel.StudentCoursesViewModel
 
 class AvailableCoursesFragment : Fragment() {
 
     private lateinit var recyclerViewElement: RecyclerView
-    private lateinit var adapter: CourseAdapterRecyclerView
+    private lateinit var adapter: AvailableCourseAdapterRecyclerView
     private lateinit var student: StudentModel
     private val viewModel: StudentCoursesViewModel by viewModels()
     private lateinit var binding: FragmentAvailableCoursesBinding
@@ -31,6 +30,7 @@ class AvailableCoursesFragment : Fragment() {
         binding = FragmentAvailableCoursesBinding.inflate(inflater, container, false)
 
         student = arguments?.getSerializable("student") as StudentModel
+        viewModel.student.value = student
 
         recyclerViewElement = binding.courseRecyclerview
         recyclerViewElement.layoutManager = LinearLayoutManager(recyclerViewElement.context)
@@ -55,25 +55,35 @@ class AvailableCoursesFragment : Fragment() {
 
     private fun initAdapter() {
         viewModel.getCourses(context!!)
+        viewModel.getStudentCourses(context!!)
         val nCareerList = viewModel.availableCourses.value!!
-        adapter = CourseAdapterRecyclerView(nCareerList)
+        adapter = AvailableCourseAdapterRecyclerView(nCareerList, viewModel)
         recyclerViewElement.adapter = adapter
-        adapter.setOnClickListener(object : CourseAdapterRecyclerView.OnItemClickListener {
+        adapter.setOnClickListener(object : AvailableCourseAdapterRecyclerView.OnItemClickListener {
             override fun onItemClick(position: Int) {
-                AlertDialog.Builder(context)
-                    .setMessage("Are you sure you want to enroll this course?")
-                    .setPositiveButton("Enroll") { _: DialogInterface, _: Int ->
-                        val course = adapter.getAtPosition(position)
+                val course = adapter.getAtPosition(position)
+                if(!viewModel.isEnrolledCourse(course!!)){
+                    AlertDialog.Builder(context)
+                        .setMessage("Are you sure you want to enroll this course?")
+                        .setPositiveButton("Enroll") { _: DialogInterface, _: Int ->
 
-                        viewModel.createStudentCourse(context!!, student, course!!)
 
-                        Toast.makeText(context!!, "Course enrolled", Toast.LENGTH_SHORT).show()
-                    }
-                    .setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
-                        adapter.notifyItemChanged(position)
-                    }
-                    .create()
-                    .show()
+                            viewModel.createStudentCourse(context!!, student, course!!)
+
+                            Toast.makeText(context!!, "Course enrolled", Toast.LENGTH_SHORT).show()
+
+                            viewModel.getStudentCourses(context!!)
+                            viewModel.getCourses(context!!)
+
+                        }
+                        .setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
+                            adapter.notifyItemChanged(position)
+                        }
+                        .create()
+                        .show()
+                }
+                else
+                    Toast.makeText(context!!, "Course already enrolled", Toast.LENGTH_SHORT).show()
             }
         })
     }

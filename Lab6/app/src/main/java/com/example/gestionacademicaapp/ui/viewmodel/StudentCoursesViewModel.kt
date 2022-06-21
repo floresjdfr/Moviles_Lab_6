@@ -16,10 +16,10 @@ class StudentCoursesViewModel : ViewModel() {
     val isLoading = MutableLiveData<Boolean>()
 
     fun getStudentCourses(context: Context) {
-            isLoading.postValue(true)
-            val result = StudentCourseRepository.getStudentCourses(context, this.student.value!!)
-            studentCourses.value = result
-            isLoading.postValue(false)
+        isLoading.postValue(true)
+        val result = StudentCourseRepository.getStudentCourses(context, this.student.value!!)
+        studentCourses.value = result
+        isLoading.postValue(false)
     }
 
     fun getCourses(context: Context) {
@@ -36,7 +36,16 @@ class StudentCoursesViewModel : ViewModel() {
     }
 
     fun unrollCourse(context: Context, studentCourse: StudentCourseModel): Boolean {
-         return StudentCourseRepository.deleteStudent(context, studentCourse)
+        return StudentCourseRepository.deleteStudent(context, studentCourse)
+    }
+
+    fun isEnrolledCourse(course: CourseModel): Boolean {
+        var response = false
+        studentCourses.value!!.forEach {
+            if(it.Course!!.ID == course.ID)
+                response = true
+        }
+        return response
     }
 //    fun updateStudent(context: Context, student: StudentModel): Boolean {
 //        isLoading.postValue(true)

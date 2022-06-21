@@ -7,13 +7,14 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.gestionacademicaapp.data.model.CourseModel
 import com.example.gestionacademicaapp.data.schemas.Course
+import com.example.gestionacademicaapp.data.schemas.StudentCourses
 
 /**
  * Let's start by creating our database CRUD helper class
  * based on the SQLiteHelper.
  */
 class CourseDatabaseHelper(context: Context) :
-        DatabaseHelper(context) {
+    DatabaseHelper(context) {
 
     /**
      * Let's create our insertData() method.
@@ -44,22 +45,28 @@ class CourseDatabaseHelper(context: Context) :
     /**
      * Let's create a function to delete a given row based on the id.
      */
-    fun deleteData(id : Int) : Int {
+    fun deleteData(id: Int): Int {
         val db = this.writableDatabase
-        return db.delete(Course.TABLE_NAME,"${Course.PK} = ?", arrayOf(id.toString()))
+
+        val studentCourses = db.rawQuery(
+            "SELECT * FROM ${StudentCourses.TABLE_NAME} WHERE ${StudentCourses.COLUMN_FK_COURSE} = $id",
+            null
+        )
+        if (studentCourses.moveToNext())
+            return -1
+        return db.delete(Course.TABLE_NAME, "${Course.PK} = ?", arrayOf(id.toString()))
     }
 
     /**
      * The below getter property will return a Cursor containing our dataset.
      */
-    fun allData() : Cursor{
+    fun allData(): Cursor {
         val db = this.writableDatabase
         return db.rawQuery("SELECT * FROM ${Course.TABLE_NAME}", null)
     }
 
 
-    fun searchData (id: Int): Cursor
-    {
+    fun searchData(id: Int): Cursor {
         val db = this.writableDatabase
         val querySearch = "SELECT * FROM ${Course.TABLE_NAME} WHERE ${Course.PK} = $id"
         return db.rawQuery(querySearch, null)

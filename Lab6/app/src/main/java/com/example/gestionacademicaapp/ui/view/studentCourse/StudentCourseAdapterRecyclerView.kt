@@ -23,7 +23,7 @@ class StudentCourseAdapterRecyclerView(items: List<StudentCourseModel>) : Recycl
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val careerListView = LayoutInflater.from(parent.context).inflate(R.layout.template_course, parent, false)
+        val careerListView = LayoutInflater.from(parent.context).inflate(R.layout.template_available_course, parent, false)
         val sch = CareerHolder(careerListView)
         mContext = parent.context
         return sch
@@ -38,6 +38,8 @@ class StudentCourseAdapterRecyclerView(items: List<StudentCourseModel>) : Recycl
 
         holder.itemView.recyclerview_course_description.text = item?.Course?.Description
         holder.itemView.recyclerview_course_credits.text = item?.Course?.Credits.toString()
+
+
     }
 
     fun getAtPosition(position: Int): StudentCourseModel? {

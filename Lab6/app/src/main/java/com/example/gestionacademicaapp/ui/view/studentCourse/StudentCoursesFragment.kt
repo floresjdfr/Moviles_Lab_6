@@ -17,10 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionacademicaapp.R
 import com.example.gestionacademicaapp.data.model.StudentModel
 import com.example.gestionacademicaapp.databinding.FragmentStudentCoursesBinding
-import com.example.gestionacademicaapp.ui.view.course.CourseAdapterRecyclerView
 import com.example.gestionacademicaapp.ui.viewmodel.StudentCoursesViewModel
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
-import kotlinx.android.synthetic.main.nav_fragment_container.*
 
 class StudentCoursesFragment : Fragment() {
     private lateinit var recyclerViewElement: RecyclerView
@@ -100,7 +98,7 @@ class StudentCoursesFragment : Fragment() {
             isCurrentlyActive: Boolean,
         ) {
             RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                .addSwipeLeftBackgroundColor(ContextCompat.getColor(context!!, R.color.secondaryDark))
+                .addSwipeLeftBackgroundColor(ContextCompat.getColor(context!!, R.color.primaryLight))
                 .addSwipeLeftActionIcon(R.drawable.ic_trash)
                 .create()
                 .decorate()

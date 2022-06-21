@@ -12,6 +12,7 @@ import com.example.gestionacademicaapp.R
 import com.example.gestionacademicaapp.data.model.StudentModel
 import com.example.gestionacademicaapp.databinding.FragmentCreateStudentBinding
 import com.example.gestionacademicaapp.ui.viewmodel.StudentViewModel
+import kotlinx.android.synthetic.main.nav_fragment_container.*
 
 
 class CreateStudentFragment : Fragment() {
@@ -51,6 +52,7 @@ class CreateStudentFragment : Fragment() {
         binding.createButton.setOnClickListener {
             createStudents()
             Toast.makeText(context, "Student added!", Toast.LENGTH_SHORT).show()
+            activity?.toolbar?.title = "Students"
             parentFragmentManager.beginTransaction().replace(R.id.fragment_container, StudentsFragment()).commit()
         }
     }
@@ -60,6 +62,7 @@ class CreateStudentFragment : Fragment() {
             val response = editCareer()
             if (response) {
                 Toast.makeText(context, "Student edited!", Toast.LENGTH_SHORT).show()
+                activity?.toolbar?.title = "Students"
                 parentFragmentManager.beginTransaction().replace(R.id.fragment_container, StudentsFragment())
                     .commit()
             } else {
